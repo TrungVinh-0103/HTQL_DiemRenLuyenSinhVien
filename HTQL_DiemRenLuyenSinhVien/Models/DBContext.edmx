@@ -1,0 +1,1370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_HTQLDiemRenLuyenSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BaoCaoDiem">
+          <Key>
+            <PropertyRef Name="BaoCaoID" />
+          </Key>
+          <Property Name="BaoCaoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="HocKyID" Type="int" />
+          <Property Name="LopID" Type="int" />
+          <Property Name="NienKhoaID" Type="int" />
+          <Property Name="NoiDung" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LoaiBaoCao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayCongBo" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiemRenLuyen">
+          <Key>
+            <PropertyRef Name="DiemRenLuyenID" />
+          </Key>
+          <Property Name="DiemRenLuyenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="HocKyID" Type="int" />
+          <Property Name="TieuChiID" Type="int" />
+          <Property Name="NguonDanhGia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diem" Type="int" Nullable="false" />
+          <Property Name="MinhChung" Type="nvarchar(max)" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HocKy">
+          <Key>
+            <PropertyRef Name="HocKyID" />
+          </Key>
+          <Property Name="HocKyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenHocKy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NamHoc" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KetQuaRenLuyen">
+          <Key>
+            <PropertyRef Name="KetQuaID" />
+          </Key>
+          <Property Name="KetQuaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="HocKyID" Type="int" />
+          <Property Name="TongDiem" Type="int" Nullable="false" />
+          <Property Name="XepLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayCapNhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="KhoaID" />
+          </Key>
+          <Property Name="KhoaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKhoa" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TruongID" Type="int" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LichSuTrangThai">
+          <Key>
+            <PropertyRef Name="LichSuID" />
+          </Key>
+          <Property Name="LichSuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayCapNhat" Type="date" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Lop">
+          <Key>
+            <PropertyRef Name="LopID" />
+          </Key>
+          <Property Name="LopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLop" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KhoaID" Type="int" />
+          <Property Name="NienKhoaID" Type="int" />
+        </EntityType>
+        <EntityType Name="NienKhoa">
+          <Key>
+            <PropertyRef Name="NienKhoaID" />
+          </Key>
+          <Property Name="NienKhoaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNienKhoa" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="NguoiDungID" />
+          </Key>
+          <Property Name="NguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="VaiTro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="NhanVienID" Type="int" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="NhanVienID" />
+          </Key>
+          <Property Name="NhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNV" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="KhoaID" Type="int" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhomTieuChi">
+          <Key>
+            <PropertyRef Name="NhomTieuChiID" />
+          </Key>
+          <Property Name="NhomTieuChiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNhom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiemToiDa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhieuDanhGia">
+          <Key>
+            <PropertyRef Name="PhieuDanhGiaID" />
+          </Key>
+          <Property Name="PhieuDanhGiaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienID" Type="int" />
+          <Property Name="HocKyID" Type="int" />
+          <Property Name="TieuChiID" Type="int" />
+          <Property Name="NguonDanhGia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diem" Type="int" Nullable="false" />
+          <Property Name="MinhChung" Type="nvarchar(max)" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayDanhGia" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="SinhVienID" />
+          </Key>
+          <Property Name="SinhVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSV" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="LopID" Type="int" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayCapNhatTrangThai" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TieuChi">
+          <Key>
+            <PropertyRef Name="TieuChiID" />
+          </Key>
+          <Property Name="TieuChiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NhomTieuChiID" Type="int" />
+          <Property Name="TenTieuChi" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DiemToiDa" Type="int" Nullable="false" />
+          <Property Name="Loai" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThongKe">
+          <Key>
+            <PropertyRef Name="ThongKeID" />
+          </Key>
+          <Property Name="ThongKeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HocKyID" Type="int" />
+          <Property Name="LoaiThongKe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DieuKienThongKe" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NoiDung" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NgayThongKe" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truong">
+          <Key>
+            <PropertyRef Name="TruongID" />
+          </Key>
+          <Property Name="TruongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTruong" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__BaoCaoDie__HocKy__4BAC3F29">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__LopID__4CA06362">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="LopID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="LopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__NienK__4D94879B">
+          <End Role="NienKhoa" Type="Self.NienKhoa" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NienKhoa">
+              <PropertyRef Name="NienKhoaID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="NienKhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__SinhV__4AB81AF0">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__HocKy__3F466844">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__SinhV__3E52440B">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__TieuC__403A8C7D">
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TieuChi">
+              <PropertyRef Name="TieuChiID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="TieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KetQuaRen__HocKy__45F365D3">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="KetQuaRenLuyen" Type="Self.KetQuaRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="KetQuaRenLuyen">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KetQuaRen__SinhV__44FF419A">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="KetQuaRenLuyen" Type="Self.KetQuaRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="KetQuaRenLuyen">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Khoa__TruongID__0519C6AF">
+          <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truong">
+              <PropertyRef Name="TruongID" />
+            </Principal>
+            <Dependent Role="Khoa">
+              <PropertyRef Name="TruongID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuTra__SinhV__571DF1D5">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="LichSuTrangThai" Type="Self.LichSuTrangThai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="LichSuTrangThai">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lop__KhoaID__0DAF0CB0">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="KhoaID" />
+            </Principal>
+            <Dependent Role="Lop">
+              <PropertyRef Name="KhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lop__NienKhoaID__0EA330E9">
+          <End Role="NienKhoa" Type="Self.NienKhoa" Multiplicity="0..1" />
+          <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NienKhoa">
+              <PropertyRef Name="NienKhoaID" />
+            </Principal>
+            <Dependent Role="Lop">
+              <PropertyRef Name="NienKhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__NhanV__2A4B4B5E">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="NhanVienID" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="NhanVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__SinhV__29572725">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__KhoaID__21B6055D">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="KhoaID" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="KhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__HocKy__38996AB5">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__SinhV__37A5467C">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__TieuC__398D8EEE">
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TieuChi">
+              <PropertyRef Name="TieuChiID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="TieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__LopID__1A14E395">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="LopID" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="LopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TieuChi__NhomTie__32E0915F">
+          <End Role="NhomTieuChi" Type="Self.NhomTieuChi" Multiplicity="0..1" />
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhomTieuChi">
+              <PropertyRef Name="NhomTieuChiID" />
+            </Principal>
+            <Dependent Role="TieuChi">
+              <PropertyRef Name="NhomTieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThongKe__HocKyID__52593CB8">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="ThongKe" Type="Self.ThongKe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="ThongKe">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_HTQLDiemRenLuyenSinhVienModelStoreContainer">
+          <EntitySet Name="BaoCaoDiem" EntityType="Self.BaoCaoDiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiemRenLuyen" EntityType="Self.DiemRenLuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HocKy" EntityType="Self.HocKy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KetQuaRenLuyen" EntityType="Self.KetQuaRenLuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuTrangThai" EntityType="Self.LichSuTrangThai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lop" EntityType="Self.Lop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NienKhoa" EntityType="Self.NienKhoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhomTieuChi" EntityType="Self.NhomTieuChi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuDanhGia" EntityType="Self.PhieuDanhGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TieuChi" EntityType="Self.TieuChi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongKe" EntityType="Self.ThongKe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truong" EntityType="Self.Truong" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BaoCaoDie__HocKy__4BAC3F29" Association="Self.FK__BaoCaoDie__HocKy__4BAC3F29">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__LopID__4CA06362" Association="Self.FK__BaoCaoDie__LopID__4CA06362">
+            <End Role="Lop" EntitySet="Lop" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__NienK__4D94879B" Association="Self.FK__BaoCaoDie__NienK__4D94879B">
+            <End Role="NienKhoa" EntitySet="NienKhoa" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__SinhV__4AB81AF0" Association="Self.FK__BaoCaoDie__SinhV__4AB81AF0">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__HocKy__3F466844" Association="Self.FK__DiemRenLu__HocKy__3F466844">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__SinhV__3E52440B" Association="Self.FK__DiemRenLu__SinhV__3E52440B">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__TieuC__403A8C7D" Association="Self.FK__DiemRenLu__TieuC__403A8C7D">
+            <End Role="TieuChi" EntitySet="TieuChi" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KetQuaRen__HocKy__45F365D3" Association="Self.FK__KetQuaRen__HocKy__45F365D3">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="KetQuaRenLuyen" EntitySet="KetQuaRenLuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KetQuaRen__SinhV__44FF419A" Association="Self.FK__KetQuaRen__SinhV__44FF419A">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="KetQuaRenLuyen" EntitySet="KetQuaRenLuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Khoa__TruongID__0519C6AF" Association="Self.FK__Khoa__TruongID__0519C6AF">
+            <End Role="Truong" EntitySet="Truong" />
+            <End Role="Khoa" EntitySet="Khoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuTra__SinhV__571DF1D5" Association="Self.FK__LichSuTra__SinhV__571DF1D5">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="LichSuTrangThai" EntitySet="LichSuTrangThai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lop__KhoaID__0DAF0CB0" Association="Self.FK__Lop__KhoaID__0DAF0CB0">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="Lop" EntitySet="Lop" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lop__NienKhoaID__0EA330E9" Association="Self.FK__Lop__NienKhoaID__0EA330E9">
+            <End Role="NienKhoa" EntitySet="NienKhoa" />
+            <End Role="Lop" EntitySet="Lop" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__NhanV__2A4B4B5E" Association="Self.FK__NguoiDung__NhanV__2A4B4B5E">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__SinhV__29572725" Association="Self.FK__NguoiDung__SinhV__29572725">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__KhoaID__21B6055D" Association="Self.FK__NhanVien__KhoaID__21B6055D">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__HocKy__38996AB5" Association="Self.FK__PhieuDanh__HocKy__38996AB5">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__SinhV__37A5467C" Association="Self.FK__PhieuDanh__SinhV__37A5467C">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__TieuC__398D8EEE" Association="Self.FK__PhieuDanh__TieuC__398D8EEE">
+            <End Role="TieuChi" EntitySet="TieuChi" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__LopID__1A14E395" Association="Self.FK__SinhVien__LopID__1A14E395">
+            <End Role="Lop" EntitySet="Lop" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TieuChi__NhomTie__32E0915F" Association="Self.FK__TieuChi__NhomTie__32E0915F">
+            <End Role="NhomTieuChi" EntitySet="NhomTieuChi" />
+            <End Role="TieuChi" EntitySet="TieuChi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThongKe__HocKyID__52593CB8" Association="Self.FK__ThongKe__HocKyID__52593CB8">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="ThongKe" EntitySet="ThongKe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_HTQLDiemRenLuyenSinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BaoCaoDiem">
+          <Key>
+            <PropertyRef Name="BaoCaoID" />
+          </Key>
+          <Property Name="BaoCaoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="HocKyID" Type="Int32" />
+          <Property Name="LopID" Type="Int32" />
+          <Property Name="NienKhoaID" Type="Int32" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoaiBaoCao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayCongBo" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HocKy" Relationship="Self.FK__BaoCaoDie__HocKy__4BAC3F29" FromRole="BaoCaoDiem" ToRole="HocKy" />
+          <NavigationProperty Name="Lop" Relationship="Self.FK__BaoCaoDie__LopID__4CA06362" FromRole="BaoCaoDiem" ToRole="Lop" />
+          <NavigationProperty Name="NienKhoa" Relationship="Self.FK__BaoCaoDie__NienK__4D94879B" FromRole="BaoCaoDiem" ToRole="NienKhoa" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__BaoCaoDie__SinhV__4AB81AF0" FromRole="BaoCaoDiem" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="DiemRenLuyen">
+          <Key>
+            <PropertyRef Name="DiemRenLuyenID" />
+          </Key>
+          <Property Name="DiemRenLuyenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="HocKyID" Type="Int32" />
+          <Property Name="TieuChiID" Type="Int32" />
+          <Property Name="NguonDanhGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Diem" Type="Int32" Nullable="false" />
+          <Property Name="MinhChung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HocKy" Relationship="Self.FK__DiemRenLu__HocKy__3F466844" FromRole="DiemRenLuyen" ToRole="HocKy" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__DiemRenLu__SinhV__3E52440B" FromRole="DiemRenLuyen" ToRole="SinhVien" />
+          <NavigationProperty Name="TieuChi" Relationship="Self.FK__DiemRenLu__TieuC__403A8C7D" FromRole="DiemRenLuyen" ToRole="TieuChi" />
+        </EntityType>
+        <EntityType Name="HocKy">
+          <Key>
+            <PropertyRef Name="HocKyID" />
+          </Key>
+          <Property Name="HocKyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenHocKy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NamHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BaoCaoDiems" Relationship="Self.FK__BaoCaoDie__HocKy__4BAC3F29" FromRole="HocKy" ToRole="BaoCaoDiem" />
+          <NavigationProperty Name="DiemRenLuyens" Relationship="Self.FK__DiemRenLu__HocKy__3F466844" FromRole="HocKy" ToRole="DiemRenLuyen" />
+          <NavigationProperty Name="KetQuaRenLuyens" Relationship="Self.FK__KetQuaRen__HocKy__45F365D3" FromRole="HocKy" ToRole="KetQuaRenLuyen" />
+          <NavigationProperty Name="PhieuDanhGias" Relationship="Self.FK__PhieuDanh__HocKy__38996AB5" FromRole="HocKy" ToRole="PhieuDanhGia" />
+          <NavigationProperty Name="ThongKes" Relationship="Self.FK__ThongKe__HocKyID__52593CB8" FromRole="HocKy" ToRole="ThongKe" />
+        </EntityType>
+        <EntityType Name="KetQuaRenLuyen">
+          <Key>
+            <PropertyRef Name="KetQuaID" />
+          </Key>
+          <Property Name="KetQuaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="HocKyID" Type="Int32" />
+          <Property Name="TongDiem" Type="Int32" Nullable="false" />
+          <Property Name="XepLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HocKy" Relationship="Self.FK__KetQuaRen__HocKy__45F365D3" FromRole="KetQuaRenLuyen" ToRole="HocKy" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__KetQuaRen__SinhV__44FF419A" FromRole="KetQuaRenLuyen" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="KhoaID" />
+          </Key>
+          <Property Name="KhoaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKhoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TruongID" Type="Int32" />
+          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Truong" Relationship="Self.FK__Khoa__TruongID__0519C6AF" FromRole="Khoa" ToRole="Truong" />
+          <NavigationProperty Name="Lops" Relationship="Self.FK__Lop__KhoaID__0DAF0CB0" FromRole="Khoa" ToRole="Lop" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__KhoaID__21B6055D" FromRole="Khoa" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="LichSuTrangThai">
+          <Key>
+            <PropertyRef Name="LichSuID" />
+          </Key>
+          <Property Name="LichSuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__LichSuTra__SinhV__571DF1D5" FromRole="LichSuTrangThai" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="Lop">
+          <Key>
+            <PropertyRef Name="LopID" />
+          </Key>
+          <Property Name="LopID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KhoaID" Type="Int32" />
+          <Property Name="NienKhoaID" Type="Int32" />
+          <NavigationProperty Name="BaoCaoDiems" Relationship="Self.FK__BaoCaoDie__LopID__4CA06362" FromRole="Lop" ToRole="BaoCaoDiem" />
+          <NavigationProperty Name="Khoa" Relationship="Self.FK__Lop__KhoaID__0DAF0CB0" FromRole="Lop" ToRole="Khoa" />
+          <NavigationProperty Name="NienKhoa" Relationship="Self.FK__Lop__NienKhoaID__0EA330E9" FromRole="Lop" ToRole="NienKhoa" />
+          <NavigationProperty Name="SinhViens" Relationship="Self.FK__SinhVien__LopID__1A14E395" FromRole="Lop" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="NienKhoa">
+          <Key>
+            <PropertyRef Name="NienKhoaID" />
+          </Key>
+          <Property Name="NienKhoaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNienKhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BaoCaoDiems" Relationship="Self.FK__BaoCaoDie__NienK__4D94879B" FromRole="NienKhoa" ToRole="BaoCaoDiem" />
+          <NavigationProperty Name="Lops" Relationship="Self.FK__Lop__NienKhoaID__0EA330E9" FromRole="NienKhoa" ToRole="Lop" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="NguoiDungID" />
+          </Key>
+          <Property Name="NguoiDungID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="NhanVienID" Type="Int32" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__NguoiDung__NhanV__2A4B4B5E" FromRole="NguoiDung" ToRole="NhanVien" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__NguoiDung__SinhV__29572725" FromRole="NguoiDung" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="NhanVienID" />
+          </Key>
+          <Property Name="NhanVienID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KhoaID" Type="Int32" />
+          <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Khoa" Relationship="Self.FK__NhanVien__KhoaID__21B6055D" FromRole="NhanVien" ToRole="Khoa" />
+          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__NhanV__2A4B4B5E" FromRole="NhanVien" ToRole="NguoiDung" />
+        </EntityType>
+        <EntityType Name="NhomTieuChi">
+          <Key>
+            <PropertyRef Name="NhomTieuChiID" />
+          </Key>
+          <Property Name="NhomTieuChiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNhom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemToiDa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TieuChis" Relationship="Self.FK__TieuChi__NhomTie__32E0915F" FromRole="NhomTieuChi" ToRole="TieuChi" />
+        </EntityType>
+        <EntityType Name="PhieuDanhGia">
+          <Key>
+            <PropertyRef Name="PhieuDanhGiaID" />
+          </Key>
+          <Property Name="PhieuDanhGiaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienID" Type="Int32" />
+          <Property Name="HocKyID" Type="Int32" />
+          <Property Name="TieuChiID" Type="Int32" />
+          <Property Name="NguonDanhGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Diem" Type="Int32" Nullable="false" />
+          <Property Name="MinhChung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayDanhGia" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HocKy" Relationship="Self.FK__PhieuDanh__HocKy__38996AB5" FromRole="PhieuDanhGia" ToRole="HocKy" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__PhieuDanh__SinhV__37A5467C" FromRole="PhieuDanhGia" ToRole="SinhVien" />
+          <NavigationProperty Name="TieuChi" Relationship="Self.FK__PhieuDanh__TieuC__398D8EEE" FromRole="PhieuDanhGia" ToRole="TieuChi" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="SinhVienID" />
+          </Key>
+          <Property Name="SinhVienID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="LopID" Type="Int32" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayCapNhatTrangThai" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BaoCaoDiems" Relationship="Self.FK__BaoCaoDie__SinhV__4AB81AF0" FromRole="SinhVien" ToRole="BaoCaoDiem" />
+          <NavigationProperty Name="DiemRenLuyens" Relationship="Self.FK__DiemRenLu__SinhV__3E52440B" FromRole="SinhVien" ToRole="DiemRenLuyen" />
+          <NavigationProperty Name="KetQuaRenLuyens" Relationship="Self.FK__KetQuaRen__SinhV__44FF419A" FromRole="SinhVien" ToRole="KetQuaRenLuyen" />
+          <NavigationProperty Name="LichSuTrangThais" Relationship="Self.FK__LichSuTra__SinhV__571DF1D5" FromRole="SinhVien" ToRole="LichSuTrangThai" />
+          <NavigationProperty Name="Lop" Relationship="Self.FK__SinhVien__LopID__1A14E395" FromRole="SinhVien" ToRole="Lop" />
+          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__SinhV__29572725" FromRole="SinhVien" ToRole="NguoiDung" />
+          <NavigationProperty Name="PhieuDanhGias" Relationship="Self.FK__PhieuDanh__SinhV__37A5467C" FromRole="SinhVien" ToRole="PhieuDanhGia" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TieuChi">
+          <Key>
+            <PropertyRef Name="TieuChiID" />
+          </Key>
+          <Property Name="TieuChiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NhomTieuChiID" Type="Int32" />
+          <Property Name="TenTieuChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemToiDa" Type="Int32" Nullable="false" />
+          <Property Name="Loai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DiemRenLuyens" Relationship="Self.FK__DiemRenLu__TieuC__403A8C7D" FromRole="TieuChi" ToRole="DiemRenLuyen" />
+          <NavigationProperty Name="NhomTieuChi" Relationship="Self.FK__TieuChi__NhomTie__32E0915F" FromRole="TieuChi" ToRole="NhomTieuChi" />
+          <NavigationProperty Name="PhieuDanhGias" Relationship="Self.FK__PhieuDanh__TieuC__398D8EEE" FromRole="TieuChi" ToRole="PhieuDanhGia" />
+        </EntityType>
+        <EntityType Name="ThongKe">
+          <Key>
+            <PropertyRef Name="ThongKeID" />
+          </Key>
+          <Property Name="ThongKeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HocKyID" Type="Int32" />
+          <Property Name="LoaiThongKe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DieuKienThongKe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayThongKe" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HocKy" Relationship="Self.FK__ThongKe__HocKyID__52593CB8" FromRole="ThongKe" ToRole="HocKy" />
+        </EntityType>
+        <EntityType Name="Truong">
+          <Key>
+            <PropertyRef Name="TruongID" />
+          </Key>
+          <Property Name="TruongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTruong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Khoas" Relationship="Self.FK__Khoa__TruongID__0519C6AF" FromRole="Truong" ToRole="Khoa" />
+        </EntityType>
+        <Association Name="FK__BaoCaoDie__HocKy__4BAC3F29">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__LopID__4CA06362">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="LopID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="LopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__NienK__4D94879B">
+          <End Role="NienKhoa" Type="Self.NienKhoa" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NienKhoa">
+              <PropertyRef Name="NienKhoaID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="NienKhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BaoCaoDie__SinhV__4AB81AF0">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="BaoCaoDiem" Type="Self.BaoCaoDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="BaoCaoDiem">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__HocKy__3F466844">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__SinhV__3E52440B">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiemRenLu__TieuC__403A8C7D">
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="0..1" />
+          <End Role="DiemRenLuyen" Type="Self.DiemRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TieuChi">
+              <PropertyRef Name="TieuChiID" />
+            </Principal>
+            <Dependent Role="DiemRenLuyen">
+              <PropertyRef Name="TieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KetQuaRen__HocKy__45F365D3">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="KetQuaRenLuyen" Type="Self.KetQuaRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="KetQuaRenLuyen">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__HocKy__38996AB5">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThongKe__HocKyID__52593CB8">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="ThongKe" Type="Self.ThongKe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HocKy">
+              <PropertyRef Name="HocKyID" />
+            </Principal>
+            <Dependent Role="ThongKe">
+              <PropertyRef Name="HocKyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KetQuaRen__SinhV__44FF419A">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="KetQuaRenLuyen" Type="Self.KetQuaRenLuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="KetQuaRenLuyen">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Khoa__TruongID__0519C6AF">
+          <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truong">
+              <PropertyRef Name="TruongID" />
+            </Principal>
+            <Dependent Role="Khoa">
+              <PropertyRef Name="TruongID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lop__KhoaID__0DAF0CB0">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="KhoaID" />
+            </Principal>
+            <Dependent Role="Lop">
+              <PropertyRef Name="KhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__KhoaID__21B6055D">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="KhoaID" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="KhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuTra__SinhV__571DF1D5">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="LichSuTrangThai" Type="Self.LichSuTrangThai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="LichSuTrangThai">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lop__NienKhoaID__0EA330E9">
+          <End Role="NienKhoa" Type="Self.NienKhoa" Multiplicity="0..1" />
+          <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NienKhoa">
+              <PropertyRef Name="NienKhoaID" />
+            </Principal>
+            <Dependent Role="Lop">
+              <PropertyRef Name="NienKhoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__LopID__1A14E395">
+          <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lop">
+              <PropertyRef Name="LopID" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="LopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__NhanV__2A4B4B5E">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="NhanVienID" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="NhanVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__SinhV__29572725">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TieuChi__NhomTie__32E0915F">
+          <End Role="NhomTieuChi" Type="Self.NhomTieuChi" Multiplicity="0..1" />
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhomTieuChi">
+              <PropertyRef Name="NhomTieuChiID" />
+            </Principal>
+            <Dependent Role="TieuChi">
+              <PropertyRef Name="NhomTieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__SinhV__37A5467C">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="SinhVienID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="SinhVienID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDanh__TieuC__398D8EEE">
+          <End Role="TieuChi" Type="Self.TieuChi" Multiplicity="0..1" />
+          <End Role="PhieuDanhGia" Type="Self.PhieuDanhGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TieuChi">
+              <PropertyRef Name="TieuChiID" />
+            </Principal>
+            <Dependent Role="PhieuDanhGia">
+              <PropertyRef Name="TieuChiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_HTQLDiemRenLuyenSinhVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BaoCaoDiems" EntityType="Self.BaoCaoDiem" />
+          <EntitySet Name="DiemRenLuyens" EntityType="Self.DiemRenLuyen" />
+          <EntitySet Name="HocKies" EntityType="Self.HocKy" />
+          <EntitySet Name="KetQuaRenLuyens" EntityType="Self.KetQuaRenLuyen" />
+          <EntitySet Name="Khoas" EntityType="Self.Khoa" />
+          <EntitySet Name="LichSuTrangThais" EntityType="Self.LichSuTrangThai" />
+          <EntitySet Name="Lops" EntityType="Self.Lop" />
+          <EntitySet Name="NienKhoas" EntityType="Self.NienKhoa" />
+          <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="NhomTieuChis" EntityType="Self.NhomTieuChi" />
+          <EntitySet Name="PhieuDanhGias" EntityType="Self.PhieuDanhGia" />
+          <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TieuChis" EntityType="Self.TieuChi" />
+          <EntitySet Name="ThongKes" EntityType="Self.ThongKe" />
+          <EntitySet Name="Truongs" EntityType="Self.Truong" />
+          <AssociationSet Name="FK__BaoCaoDie__HocKy__4BAC3F29" Association="Self.FK__BaoCaoDie__HocKy__4BAC3F29">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__LopID__4CA06362" Association="Self.FK__BaoCaoDie__LopID__4CA06362">
+            <End Role="Lop" EntitySet="Lops" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__NienK__4D94879B" Association="Self.FK__BaoCaoDie__NienK__4D94879B">
+            <End Role="NienKhoa" EntitySet="NienKhoas" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BaoCaoDie__SinhV__4AB81AF0" Association="Self.FK__BaoCaoDie__SinhV__4AB81AF0">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="BaoCaoDiem" EntitySet="BaoCaoDiems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__HocKy__3F466844" Association="Self.FK__DiemRenLu__HocKy__3F466844">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__SinhV__3E52440B" Association="Self.FK__DiemRenLu__SinhV__3E52440B">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiemRenLu__TieuC__403A8C7D" Association="Self.FK__DiemRenLu__TieuC__403A8C7D">
+            <End Role="TieuChi" EntitySet="TieuChis" />
+            <End Role="DiemRenLuyen" EntitySet="DiemRenLuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KetQuaRen__HocKy__45F365D3" Association="Self.FK__KetQuaRen__HocKy__45F365D3">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="KetQuaRenLuyen" EntitySet="KetQuaRenLuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__HocKy__38996AB5" Association="Self.FK__PhieuDanh__HocKy__38996AB5">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThongKe__HocKyID__52593CB8" Association="Self.FK__ThongKe__HocKyID__52593CB8">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="ThongKe" EntitySet="ThongKes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KetQuaRen__SinhV__44FF419A" Association="Self.FK__KetQuaRen__SinhV__44FF419A">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="KetQuaRenLuyen" EntitySet="KetQuaRenLuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Khoa__TruongID__0519C6AF" Association="Self.FK__Khoa__TruongID__0519C6AF">
+            <End Role="Truong" EntitySet="Truongs" />
+            <End Role="Khoa" EntitySet="Khoas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lop__KhoaID__0DAF0CB0" Association="Self.FK__Lop__KhoaID__0DAF0CB0">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="Lop" EntitySet="Lops" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__KhoaID__21B6055D" Association="Self.FK__NhanVien__KhoaID__21B6055D">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuTra__SinhV__571DF1D5" Association="Self.FK__LichSuTra__SinhV__571DF1D5">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="LichSuTrangThai" EntitySet="LichSuTrangThais" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lop__NienKhoaID__0EA330E9" Association="Self.FK__Lop__NienKhoaID__0EA330E9">
+            <End Role="NienKhoa" EntitySet="NienKhoas" />
+            <End Role="Lop" EntitySet="Lops" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__LopID__1A14E395" Association="Self.FK__SinhVien__LopID__1A14E395">
+            <End Role="Lop" EntitySet="Lops" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__NhanV__2A4B4B5E" Association="Self.FK__NguoiDung__NhanV__2A4B4B5E">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__SinhV__29572725" Association="Self.FK__NguoiDung__SinhV__29572725">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TieuChi__NhomTie__32E0915F" Association="Self.FK__TieuChi__NhomTie__32E0915F">
+            <End Role="NhomTieuChi" EntitySet="NhomTieuChis" />
+            <End Role="TieuChi" EntitySet="TieuChis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__SinhV__37A5467C" Association="Self.FK__PhieuDanh__SinhV__37A5467C">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDanh__TieuC__398D8EEE" Association="Self.FK__PhieuDanh__TieuC__398D8EEE">
+            <End Role="TieuChi" EntitySet="TieuChis" />
+            <End Role="PhieuDanhGia" EntitySet="PhieuDanhGias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_HTQLDiemRenLuyenSinhVienModelStoreContainer" CdmEntityContainer="DB_HTQLDiemRenLuyenSinhVienEntities">
+          <EntitySetMapping Name="BaoCaoDiems">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.BaoCaoDiem">
+              <MappingFragment StoreEntitySet="BaoCaoDiem">
+                <ScalarProperty Name="BaoCaoID" ColumnName="BaoCaoID" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="LopID" ColumnName="LopID" />
+                <ScalarProperty Name="NienKhoaID" ColumnName="NienKhoaID" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="LoaiBaoCao" ColumnName="LoaiBaoCao" />
+                <ScalarProperty Name="NgayCongBo" ColumnName="NgayCongBo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiemRenLuyens">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.DiemRenLuyen">
+              <MappingFragment StoreEntitySet="DiemRenLuyen">
+                <ScalarProperty Name="DiemRenLuyenID" ColumnName="DiemRenLuyenID" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="TieuChiID" ColumnName="TieuChiID" />
+                <ScalarProperty Name="NguonDanhGia" ColumnName="NguonDanhGia" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+                <ScalarProperty Name="MinhChung" ColumnName="MinhChung" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HocKies">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.HocKy">
+              <MappingFragment StoreEntitySet="HocKy">
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="TenHocKy" ColumnName="TenHocKy" />
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KetQuaRenLuyens">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.KetQuaRenLuyen">
+              <MappingFragment StoreEntitySet="KetQuaRenLuyen">
+                <ScalarProperty Name="KetQuaID" ColumnName="KetQuaID" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="TongDiem" ColumnName="TongDiem" />
+                <ScalarProperty Name="XepLoai" ColumnName="XepLoai" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoas">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.Khoa">
+              <MappingFragment StoreEntitySet="Khoa">
+                <ScalarProperty Name="KhoaID" ColumnName="KhoaID" />
+                <ScalarProperty Name="TenKhoa" ColumnName="TenKhoa" />
+                <ScalarProperty Name="TruongID" ColumnName="TruongID" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichSuTrangThais">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.LichSuTrangThai">
+              <MappingFragment StoreEntitySet="LichSuTrangThai">
+                <ScalarProperty Name="LichSuID" ColumnName="LichSuID" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lops">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.Lop">
+              <MappingFragment StoreEntitySet="Lop">
+                <ScalarProperty Name="LopID" ColumnName="LopID" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="KhoaID" ColumnName="KhoaID" />
+                <ScalarProperty Name="NienKhoaID" ColumnName="NienKhoaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NienKhoas">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.NienKhoa">
+              <MappingFragment StoreEntitySet="NienKhoa">
+                <ScalarProperty Name="NienKhoaID" ColumnName="NienKhoaID" />
+                <ScalarProperty Name="TenNienKhoa" ColumnName="TenNienKhoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDungs">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.NguoiDung">
+              <MappingFragment StoreEntitySet="NguoiDung">
+                <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KhoaID" ColumnName="KhoaID" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhomTieuChis">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.NhomTieuChi">
+              <MappingFragment StoreEntitySet="NhomTieuChi">
+                <ScalarProperty Name="NhomTieuChiID" ColumnName="NhomTieuChiID" />
+                <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+                <ScalarProperty Name="DiemToiDa" ColumnName="DiemToiDa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuDanhGias">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.PhieuDanhGia">
+              <MappingFragment StoreEntitySet="PhieuDanhGia">
+                <ScalarProperty Name="PhieuDanhGiaID" ColumnName="PhieuDanhGiaID" />
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="TieuChiID" ColumnName="TieuChiID" />
+                <ScalarProperty Name="NguonDanhGia" ColumnName="NguonDanhGia" />
+                <ScalarProperty Name="Diem" ColumnName="Diem" />
+                <ScalarProperty Name="MinhChung" ColumnName="MinhChung" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayDanhGia" ColumnName="NgayDanhGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinhViens">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.SinhVien">
+              <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="SinhVienID" ColumnName="SinhVienID" />
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="LopID" ColumnName="LopID" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayCapNhatTrangThai" ColumnName="NgayCapNhatTrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TieuChis">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.TieuChi">
+              <MappingFragment StoreEntitySet="TieuChi">
+                <ScalarProperty Name="TieuChiID" ColumnName="TieuChiID" />
+                <ScalarProperty Name="NhomTieuChiID" ColumnName="NhomTieuChiID" />
+                <ScalarProperty Name="TenTieuChi" ColumnName="TenTieuChi" />
+                <ScalarProperty Name="DiemToiDa" ColumnName="DiemToiDa" />
+                <ScalarProperty Name="Loai" ColumnName="Loai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongKes">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.ThongKe">
+              <MappingFragment StoreEntitySet="ThongKe">
+                <ScalarProperty Name="ThongKeID" ColumnName="ThongKeID" />
+                <ScalarProperty Name="HocKyID" ColumnName="HocKyID" />
+                <ScalarProperty Name="LoaiThongKe" ColumnName="LoaiThongKe" />
+                <ScalarProperty Name="DieuKienThongKe" ColumnName="DieuKienThongKe" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NgayThongKe" ColumnName="NgayThongKe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Truongs">
+            <EntityTypeMapping TypeName="DB_HTQLDiemRenLuyenSinhVienModel.Truong">
+              <MappingFragment StoreEntitySet="Truong">
+                <ScalarProperty Name="TruongID" ColumnName="TruongID" />
+                <ScalarProperty Name="TenTruong" ColumnName="TenTruong" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

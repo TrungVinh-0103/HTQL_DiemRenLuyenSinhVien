@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fdb934f2cd9e4743a1dd5423c1f6c7b6" Name="Diagram1" ZoomLevel="50">
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.BaoCaoDiem" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.DiemRenLuyen" Width="1.5" PointX="10.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.HocKy" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.KetQuaRenLuyen" Width="1.5" PointX="13.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.Khoa" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.LichSuTrangThai" Width="1.5" PointX="10.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.Lop" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.NienKhoa" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.NguoiDung" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.NhanVien" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.NhomTieuChi" Width="1.5" PointX="9" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.PhieuDanhGia" Width="1.5" PointX="13.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.SinhVien" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.TieuChi" Width="1.5" PointX="11.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.ThongKe" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_HTQLDiemRenLuyenSinhVienModel.Truong" Width="1.5" PointX="1.5" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__BaoCaoDie__HocKy__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__BaoCaoDie__LopID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__BaoCaoDie__NienK__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__BaoCaoDie__SinhV__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__DiemRenLu__HocKy__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__DiemRenLu__SinhV__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__DiemRenLu__TieuC__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__KetQuaRen__HocKy__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__PhieuDanh__HocKy__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__ThongKe__HocKyID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__KetQuaRen__SinhV__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__Khoa__TruongID__0519C6AF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__Lop__KhoaID__0DAF0CB0" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__NhanVien__KhoaID__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__LichSuTra__SinhV__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__Lop__NienKhoaID__0EA330E9" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__SinhVien__LopID__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__NguoiDung__NhanV__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__NguoiDung__SinhV__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__TieuChi__NhomTie__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__PhieuDanh__SinhV__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_HTQLDiemRenLuyenSinhVienModel.FK__PhieuDanh__TieuC__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
